@@ -28,6 +28,7 @@ os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "2")
 os.environ.setdefault("NUMEXPR_NUM_THREADS", "2")
 
+#this segment imports all the necessary libraries such as argparse,cv2,ultralytics,etc.
 import argparse
 import time
 from collections import defaultdict, deque
@@ -37,9 +38,11 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 
+#this segment tries to import torch and winsound
+#for torch it tries to import the two types those being set_num_threads(2) and set_num_interop_threads(1)
 try:
     import torch
-    torch.set_num_threads(2)
+    torch.set_num_threads(2)        
     try:
         torch.set_num_interop_threads(1)
     except RuntimeError:
